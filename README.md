@@ -53,6 +53,8 @@ Please not that you do not need to build any controllers for either the
 login_path or the check_path. They are only used internally to identify
 when a login needs to happen.
 
+Also note that you still have to provide a user provider. This bundle only authenticates the user based on an OAuth service but does not create any User object itself. 
+
 Builtin OAuth Providers
 =======================
 This bundle ships with the following builtin providers:
@@ -60,8 +62,6 @@ This bundle ships with the following builtin providers:
 * Github
 * Facebook
 * Google
-* <strike>Twitter</strike>
-* <strike>Yahoo!</strike>
 
 Notes on Google: you need to at least provide the scope `https://www.googleapis.com/auth/buzz.readonly`
 in order to get a username
