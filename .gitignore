@@ -1,0 +1,6 @@
+.DS_Store
+._*
+catalog.xml
+/nbproject
+/Tests/autoload.php
+/phpunit.xml
