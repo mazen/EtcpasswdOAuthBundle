@@ -36,6 +36,4 @@ class OAuthToken extends AbstractToken
         return $this->response;
     }
 
-
-
 }

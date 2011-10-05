@@ -2,7 +2,6 @@
 
 namespace Etcpasswd\OAuthBundle\Provider;
 
-
 use Etcpasswd\OAuthBundle\Provider\TokenResponseInterface,
     Etcpasswd\OAuthBundle\Provider\Token\GithubToken;
 
@@ -35,7 +34,6 @@ class GithubProvider extends Provider
      */
     public function createTokenResponse($clientId, $secret, $code, $redirectUrl = "")
     {
-
         $url = 'https://github.com/login/oauth/access_token'
             .'?client_id='.$clientId
             .'&redirect_url='.$redirectUrl
@@ -44,10 +42,8 @@ class GithubProvider extends Provider
             .'&grant_type=authorization_code';
 
         $response = parse_str($this->request($url), $result);
-        
 
-        
-        if(isset($result['error'])) {
+        if (isset($result['error'])) {
 
          // @todo: handling of backend errors
 //          error
@@ -91,9 +87,8 @@ class GithubProvider extends Provider
 
         $url = 'https://api.github.com/user?access_token='.$accessToken;
         $jsonObject = json_decode($this->request($url));
-    
+
         return new GithubToken($jsonObject, $result['access_token']);
     }
-
 
 }

@@ -31,15 +31,14 @@ class GoogleProvider extends Provider
         $this->client->send($request, $response);
 
         $data = json_decode($response->getContent());
-        if(isset($data->error)) {
+        if (isset($data->error)) {
             return;
         }
         $expiresAt = time()+$data->expires_in;
 
-
         $people = 'https://www.googleapis.com/plus/v1/people/me'
             .'?key='.$clientId
-			.'&access_token='.$data->access_token;
+            .'&access_token='.$data->access_token;
         $request = new Request(Request::METHOD_GET, $people);
         $response = new Response();
 
@@ -47,13 +46,10 @@ class GoogleProvider extends Provider
         $me = json_decode($response->getContent());
 
         return new GoogleToken($me, $data->access_token, $expiresAt);
-
-
     }
 
     public function getAuthorizationUrl($clientId, $scope, $redirectUrl)
     {
-
         return 'https://accounts.google.com/o/oauth2/auth'
             .'?client_id='.$clientId
             .'&redirect_uri='.$redirectUrl

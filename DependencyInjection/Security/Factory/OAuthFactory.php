@@ -16,8 +16,19 @@ use Symfony\Component\DependencyInjection\ContainerBuilder,
  */
 class OAuthFactory extends AbstractFactory
 {
-	protected $key;
+    /**
+     * The factory key. This is used by the security framework
+     * to check which factory to invoke.
+     *
+     * @var string
+     */
+    protected $key;
 
+    /**
+     * Client options
+     *
+     * @var array
+     */
     protected $options = array(
         'client_id'                      => null,
         'client_secret'                  => null,
@@ -58,8 +69,8 @@ class OAuthFactory extends AbstractFactory
     protected function createListener($container, $id, $config, $userProvider)
     {
         $providerType   = $config['auth_provider'];
+        $id = $id.'.'.$providerType;
 
-		$id = $id.'.'.$providerType;
         $oAuthProvider = sprintf('etcpasswd_oauth.provider.%s', $providerType);
         $listenerId = parent::createListener($container, $id, $config, $userProvider);
 
@@ -108,16 +119,16 @@ class OAuthFactory extends AbstractFactory
         return ($this->key !== null) ? $this->key : 'oauth';
     }
 
-	/**
-	 * Allows for overriding the provided key so that multiple instances of this factory can be generated
-	 * using different keys.
-	 *
-	 * @param string $key
-	 */
-	public function setKey($key)
-	{
-		$this->key = $key;
-	}
+    /**
+     * Allows for overriding the provided key so that multiple instances of this factory can be generated
+     * using different keys.
+     *
+     * @param string $key
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+    }
 
     /**
      * {@inheritDoc}

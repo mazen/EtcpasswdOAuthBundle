@@ -27,7 +27,6 @@ abstract class Provider implements ProviderInterface
         $response = new Response();
         $this->client->send($request, $response);
         return $response->getContent();
-
     }
 
 }

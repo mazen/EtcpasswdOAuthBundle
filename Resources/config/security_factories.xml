@@ -13,25 +13,25 @@
         </service>
 
         <service id="etcpasswd_oauth.security.factory.facebook"
-        	class="%etcpasswd_oauth.security.factory.class%"
-        	public="false">
-        	<call method="setKey"><argument>oauth_facebook</argument></call>
-        	<tag name="security.listener.factory" />
-    	</service>
+            class="%etcpasswd_oauth.security.factory.class%"
+            public="false">
+            <call method="setKey"><argument>oauth_facebook</argument></call>
+            <tag name="security.listener.factory" />
+        </service>
 
-    	<service id="etcpasswd_oauth.security.factory.github"
-        	class="%etcpasswd_oauth.security.factory.class%"
-        	public="false">
-        	<call method="setKey"><argument>oauth_github</argument></call>
-        	<tag name="security.listener.factory" />
-    	</service>
+        <service id="etcpasswd_oauth.security.factory.github"
+            class="%etcpasswd_oauth.security.factory.class%"
+            public="false">
+            <call method="setKey"><argument>oauth_github</argument></call>
+            <tag name="security.listener.factory" />
+        </service>
 
-    	<service id="etcpasswd_oauth.security.factory.google"
-        	class="%etcpasswd_oauth.security.factory.class%"
-        	public="false">
-        	<call method="setKey"><argument>oauth_google</argument></call>
-        	<tag name="security.listener.factory" />
-    	</service>
+        <service id="etcpasswd_oauth.security.factory.google"
+            class="%etcpasswd_oauth.security.factory.class%"
+            public="false">
+            <call method="setKey"><argument>oauth_google</argument></call>
+            <tag name="security.listener.factory" />
+        </service>
     </services>
 
 </container>

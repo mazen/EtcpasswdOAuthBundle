@@ -12,7 +12,6 @@ class FacebookProvider extends Provider
 
     public function createTokenResponse($clientId, $secret, $code, $redirectUrl = "")
     {
-
         $url = 'https://graph.facebook.com/oauth/access_token'
             .'?client_id='.$clientId
             .'&redirect_uri='.$redirectUrl
@@ -21,9 +20,7 @@ class FacebookProvider extends Provider
 
         parse_str($this->request($url), $result);
 
-        if(isset($result['error']))
-        {
-            // TODO:
+        if (isset($result['error'])) {
             return;
         }
 
