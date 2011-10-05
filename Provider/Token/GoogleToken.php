@@ -41,7 +41,7 @@ class GoogleToken implements TokenResponseInterface
      */
     public function getUsername()
     {
-        return $this->json->data->displayName;
+        return $this->json->displayName;
     }
 
     /**

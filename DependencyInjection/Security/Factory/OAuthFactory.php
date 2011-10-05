@@ -16,6 +16,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder,
  */
 class OAuthFactory extends AbstractFactory
 {
+	protected $key;
+
     protected $options = array(
         'client_id'                      => null,
         'client_secret'                  => null,
@@ -56,8 +58,9 @@ class OAuthFactory extends AbstractFactory
     protected function createListener($container, $id, $config, $userProvider)
     {
         $providerType   = $config['auth_provider'];
-        $oAuthProvider = sprintf('etcpasswd_oauth.provider.%s', $providerType);
 
+		$id = $id.'.'.$providerType;
+        $oAuthProvider = sprintf('etcpasswd_oauth.provider.%s', $providerType);
         $listenerId = parent::createListener($container, $id, $config, $userProvider);
 
         $listener = $container->getDefinition($listenerId);
@@ -102,8 +105,19 @@ class OAuthFactory extends AbstractFactory
      */
     public function getKey()
     {
-        return 'oauth';
+        return ($this->key !== null) ? $this->key : 'oauth';
     }
+
+	/**
+	 * Allows for overriding the provided key so that multiple instances of this factory can be generated
+	 * using different keys.
+	 *
+	 * @param string $key
+	 */
+	public function setKey($key)
+	{
+		$this->key = $key;
+	}
 
     /**
      * {@inheritDoc}

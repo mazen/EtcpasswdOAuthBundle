@@ -53,7 +53,50 @@ Please not that you do not need to build any controllers for either the
 login_path or the check_path. They are only used internally to identify
 when a login needs to happen.
 
-Also note that you still have to provide a user provider. This bundle only authenticates the user based on an OAuth service but does not create any User object itself. 
+Also note that you still have to provide a user provider. This bundle only authenticates the user based on an OAuth service but does not create any User object itself.
+
+Specifying multiple OAuth2 Providers
+====================================
+This package also allows to use different providers at once for signing in.
+All you have to do is to add those providers to the security.yml
+
+Example:
+
+	firewalls:
+	    main:
+	      anonymous: true
+	      logout: true
+	      pattern: ^/
+
+	      oauth_github:
+	        auth_provider: "github"
+	        client_id: xxx
+	        client_secret: xxx
+	        scope: repo,user
+	        login_path: /login/github
+	        check_path: /auth/github
+	        failure_path:  /
+
+	      oauth_facebook:
+	        auth_provider: "facebook"
+	        client_id:     xxx
+	        client_secret: xxx
+	        scope:         ""
+	        login_path:    /login/facebook
+	        check_path:    /auth/facebook
+	        failure_path:  /
+
+	      oauth_google:
+	        auth_provider: "google"
+	        client_id:     xxx
+	        client_secret: xxx
+	        scope:         "https://www.googleapis.com/auth/plus.me"
+	        login_path:    /login/google
+	        check_path:    /auth/google
+	        failure_path:  /
+
+Calling either /login/github, /login/facebook or /login/google will then use
+the correct oauth provider.
 
 Builtin OAuth Providers
 =======================
@@ -63,7 +106,7 @@ This bundle ships with the following builtin providers:
 * Facebook
 * Google
 
-Notes on Google: you need to at least provide the scope `https://www.googleapis.com/auth/buzz.readonly`
+Notes on Google: you need to at least provide the scope `https://www.googleapis.com/auth/plus.me`
 in order to get a username
 
 

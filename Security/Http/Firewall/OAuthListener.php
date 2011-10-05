@@ -26,7 +26,7 @@ use Etcpasswd\OAuthBundle\Provider\ProviderInterface,
 class OAuthListener extends AbstractAuthenticationListener
 {
     private $oauthProvider;
-    private $httpUtils;
+    protected $httpUtils;
 
     /**
      * {@inheritdoc}
@@ -48,7 +48,6 @@ class OAuthListener extends AbstractAuthenticationListener
      */
     protected function requiresAuthentication(Request $request)
     {
-
         if ( $this->httpUtils->checkRequestPath($request, $this->options['check_path'])
             || $this->httpUtils->checkRequestPath($request, $this->options['login_path'])
         ) {

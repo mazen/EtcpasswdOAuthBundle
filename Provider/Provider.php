@@ -25,7 +25,6 @@ abstract class Provider implements ProviderInterface
         $method = is_null($method) ? Request::METHOD_GET : $method;
         $request = new Request($method, $url);
         $response = new Response();
-
         $this->client->send($request, $response);
         return $response->getContent();
 

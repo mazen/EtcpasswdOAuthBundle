@@ -44,8 +44,9 @@ class GithubProvider extends Provider
             .'&grant_type=authorization_code';
 
         $response = parse_str($this->request($url), $result);
-        parse_str($response->getContent(), $result);
+        
 
+        
         if(isset($result['error'])) {
 
          // @todo: handling of backend errors
@@ -90,7 +91,7 @@ class GithubProvider extends Provider
 
         $url = 'https://api.github.com/user?access_token='.$accessToken;
         $jsonObject = json_decode($this->request($url));
-
+    
         return new GithubToken($jsonObject, $result['access_token']);
     }
 
