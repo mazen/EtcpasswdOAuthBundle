@@ -7,11 +7,15 @@
     <parameters>
         <parameter key="etcpasswd_oauth.authentication.provider.oauth.class">Etcpasswd\OAuthBundle\Security\Core\Authentication\Provider\OAuthProvider</parameter>
         <parameter key="etcpasswd_oauth.authentication.listener.oauth.class">Etcpasswd\OAuthBundle\Security\Http\Firewall\OAuthListener</parameter>
-
+        
+        <parameter key="etcpasswd_oauth.user.provider.class">Etcpasswd\OAuthBundle\Security\Core\User\UserProvider</parameter>
+        
         <parameter key="etcpasswd_oauth.http_client.class">Buzz\Client\Curl</parameter>
     </parameters>
 
     <services>
+        <!-- User provider -->
+        <service id="etcpasswd_oauth.user.provider" class="%etcpasswd_oauth.user.provider.class%" />
 
         <!-- security provider -->
         <service id="etcpasswd_oauth.authentication.provider.oauth" class="%etcpasswd_oauth.authentication.provider.oauth.class%">

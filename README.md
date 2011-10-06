@@ -109,8 +109,41 @@ This bundle ships with the following builtin providers:
 Notes on Google: you need to at least provide the scope `https://www.googleapis.com/auth/plus.me`
 in order to get a username
 
+Authorizing users
+=================
+This bundle does not ship with any way of authorization of users and / or persitant state. You should have a look 
+at the https://github.com/FriendsOfSymfony/FOSUserBundle for that. 
+If you want to use those users anyways, without ever wanting to persist them into a database, you can though add 
+the provider shipped with this bundle to your security configuration.
+This will allow you to access the accessToken via the Security Context service to query other API services from the 
+given provider.
 
-Adding a custom OAuth Provider
-==============================
+Example security.yml:
 
+    security:
+      firewalls:
+        main:
+          anonymous: true
+          logout: true
+          pattern: ^/
 
+          oauth_github:
+            auth_provider: "github"
+            client_id:     xxx
+            client_secret: xxx
+            scope: repo,user
+            login_path: /login/github
+            check_path: /auth/github
+            failure_path:  /
+
+      role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER]
+
+      providers:
+        main:
+          id: etcpasswd_oauth.user.provider
+      
+      access_control: ~  
+
+      factories:
+        - "%kernel.root_dir%/../vendor/bundles/Etcpasswd/OAuthBundle/Resources/config/security_factories.xml"

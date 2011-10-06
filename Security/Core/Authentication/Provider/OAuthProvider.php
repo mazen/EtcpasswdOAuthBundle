@@ -35,7 +35,6 @@ class OAuthProvider implements AuthenticationProviderInterface
     public function authenticate(TokenInterface $token)
     {
         $user = $this->userProvider->loadUserByUsername($token->getUsername());
-
         if ($user) {
             $authenticatedToken = new OAuthtoken($user->getRoles(), $token->getResponse());
             $authenticatedToken ->setAuthenticated(true);
