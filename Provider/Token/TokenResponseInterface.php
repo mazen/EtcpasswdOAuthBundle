@@ -38,4 +38,12 @@ interface TokenResponseInterface
      * @return bool
      */
     function isLongLived();
+    
+    /**
+     * Returns the provider id used to generate the access
+     * token
+     *
+     * @returun string
+     */
+    function getProviderKey();
 }

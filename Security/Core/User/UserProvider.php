@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\KernelInterface,
 
 /**
  * A User provider which is using the OAuth bundle to generate new
- * "abstract" suers
+ * "abstract" users
  *
  * @author Marcel Beerta <marcel@etcpasswd.de>
  *

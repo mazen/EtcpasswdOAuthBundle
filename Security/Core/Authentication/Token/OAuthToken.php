@@ -18,6 +18,7 @@ class OAuthToken extends AbstractToken
         parent::__construct($roles);
         $this->response = $response;
         $this->setAttribute('access_token', $response->getAccessToken());
+        $this->setAttribute('via', $response->getProviderKey());
     }
 
     public function getCredentials()

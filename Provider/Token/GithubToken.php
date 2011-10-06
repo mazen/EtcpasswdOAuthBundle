@@ -54,5 +54,10 @@ class GithubToken implements TokenResponseInterface
     {
         return $this->accessToken;
     }
-
+    
+    public function getProviderKey()
+    {
+        return 'github';
+    }
+    
 }

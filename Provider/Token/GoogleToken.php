@@ -57,4 +57,8 @@ class GoogleToken implements TokenResponseInterface
         return $this->accessToken;
     }
 
+    public function getProviderKey()
+    {
+        return 'google';
+    }
 }
