@@ -47,14 +47,19 @@
             class="Etcpasswd\OAuthBundle\Provider\GoogleProvider"
             parent="etcpasswd_oauth.provider.abstract"
             public="false" />
-        <!--
+
+        <!-- oauth1.0 providers -->
+        <service id="etcpasswd_oauth.provider.oauth1.abstract" class="Etcpasswd\OAuthBundle\Provider\OAuth1\OAuth1Provider" public="false" abstract="true">
+            <argument type="service" id="etcpasswd_oauth.http_client" />
+        </service>
+
         <service id="etcpasswd_oauth.provider.twitter"
-            class="Etcpasswd\OAuthBundle\Provider\FacebookProvider"
-            parent="etcpasswd_oauth.provider.abstract"
+            class="Etcpasswd\OAuthBundle\Provider\OAuth1\TwitterProvider"
+            parent="etcpasswd_oauth.provider.oauth1.abstract"
             public="false" />
 
 
-
+        <!--
         <service id="etcpasswd_oauth.provider.yahoo"
             class="Etcpasswd\OAuthBundle\Provider\FacebookProvider"
             parent="etcpasswd_oauth.provider.abstract"

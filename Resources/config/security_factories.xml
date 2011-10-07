@@ -32,6 +32,15 @@
         	<call method="setKey"><argument>oauth_google</argument></call>
         	<tag name="security.listener.factory" />
     	</service>
+
+    	<service id="etcpasswd_oauth.security.factory.twitter"
+            class="%etcpasswd_oauth.security.factory.class%"
+            public="false">
+            <call method="setKey"><argument>oauth_twitter</argument></call>
+            <tag name="security.listener.factory" />
+        </service>
+
+
     </services>
 
 </container>
