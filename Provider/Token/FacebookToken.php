@@ -39,9 +39,9 @@ class FacebookToken implements TokenResponseInterface
     /**
      * {@inheritDoc}
      */
-    public function getUsername()
+    public function getUsername($field = 'name')
     {
-        return $this->json->name;
+        return $this->json->$field;
     }
 
     /**
