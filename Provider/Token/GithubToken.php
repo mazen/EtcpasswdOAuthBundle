@@ -37,9 +37,9 @@ class GithubToken implements TokenResponseInterface
     /**
      * {@inheritDoc}
      */
-    public function getUsername()
+    public function getUsername($field = 'login')
     {
-        return $this->json->login;
+        return $this->json->$field;
     }
 
     /**

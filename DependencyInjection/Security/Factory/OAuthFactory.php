@@ -34,6 +34,7 @@ class OAuthFactory extends AbstractFactory
         'client_secret'                  => null,
         'auth_provider'                  => null,
         'scope'                          => null,
+        'uid'                            => null,
         'check_path'                     => '/login_check',
         'login_path'                     => '/login',
         'use_forward'                    => false,
@@ -91,6 +92,7 @@ class OAuthFactory extends AbstractFactory
             ->scalarNode('auth_provider')->cannotBeEmpty()->isRequired()->end()
             ->scalarNode('client_id')->cannotBeEmpty()->isRequired()->end()
             ->scalarNode('client_secret')->cannotBeEmpty()->isRequired()->end()
+            ->scalarNode('uid')->defaultNull()->end()
             ->scalarNode('scope')->defaultValue('')->end()
             ->scalarNode('failure_path')->cannotBeEmpty()->end();
     }
