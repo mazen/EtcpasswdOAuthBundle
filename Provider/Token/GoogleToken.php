@@ -39,9 +39,9 @@ class GoogleToken implements TokenResponseInterface
     /**
      * {@inheritDoc}
      */
-    public function getUsername()
+    public function getUsername($field = 'displayName')
     {
-        return $this->json->displayName;
+        return $this->json->$field;
     }
 
     /**

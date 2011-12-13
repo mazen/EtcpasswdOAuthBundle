@@ -41,6 +41,7 @@ Configure your security firewall:
             auth_provider: api provider
             client_id:     client id
             client_secret: secret
+            uid:           email
             scope:         requested scope
             login_path:    /login
             check_path:    /auth

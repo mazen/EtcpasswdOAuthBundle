@@ -80,8 +80,14 @@ class OAuthListener extends AbstractAuthenticationListener
             throw new AuthenticationException('Authentication failed');
         }
 
+        if (null === $this->options['uid']) {
+            $username = $token->getUsername();
+        } else {
+            $username = $token->getUsername($this->options['uid']);
+        }
+
         $authToken = new OAuthToken(array(), $token);
-        $authToken -> setUser($token->getUsername());
+        $authToken->setUser($username);
 
         return $this->authenticationManager
             ->authenticate($authToken);
