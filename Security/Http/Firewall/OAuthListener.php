@@ -74,9 +74,9 @@ class OAuthListener extends AbstractAuthenticationListener
                 $this->options['client_secret'],
                 $code,
                 $this->assembleRedirectUrl($this->options['check_path'], $request)
-        );
+            );
 
-        if(is_null($token)) {
+        if (is_null($token)) {
             throw new AuthenticationException('Authentication failed');
         }
 
