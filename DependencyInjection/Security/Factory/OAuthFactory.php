@@ -44,6 +44,7 @@ class OAuthFactory extends AbstractFactory
         'use_referer'                    => false,
         'failure_path'                   => null,
         'failure_forward'                => false,
+        'remember_me'                    => false,
     );
 
     /**
@@ -102,7 +103,7 @@ class OAuthFactory extends AbstractFactory
      */
     protected function isRememberMeAware($config)
     {
-        return false;
+        return $config['remember_me'];
     }
 
     /**
