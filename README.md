@@ -1,4 +1,4 @@
-EtcpasswdOAuthBundle - [Test] Pfister Edition!
+EtcpasswdOAuthBundle
 ==============
 
 This bundle is is still under development, things might change!
