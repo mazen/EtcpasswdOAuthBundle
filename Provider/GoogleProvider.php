@@ -36,7 +36,8 @@ class GoogleProvider extends Provider
         }
         $expiresAt = time()+$data->expires_in;
 
-        $people = 'https://www.googleapis.com/plus/v1/people/me'
+        //$people = 'https://www.googleapis.com/plus/v1/people/me'
+        $people = 'https://www.googleapis.com/oauth2/v1/userinfo'
             .'?key='.$clientId
             .'&access_token='.$data->access_token;
         $request = new Request(Request::METHOD_GET, $people);
@@ -53,6 +54,7 @@ class GoogleProvider extends Provider
         return 'https://accounts.google.com/o/oauth2/auth'
             .'?client_id='.$clientId
             .'&redirect_uri='.$redirectUrl
+            .'&state=' . urlencode('/profile')
             .'&scope='.urlencode($scope)
             .'&response_type=code';
     }
