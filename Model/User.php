@@ -10,17 +10,26 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
-    
     private $username;
-    
+
+    private $roles = array('ROLE_USER');
+
     /**
      * {@inheritdoc}
      */
     function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
-    
+
+    /**
+     * {@inheritdoc}
+     */
+    function setRoles($roles)
+    {
+        $this->roles = $roles;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -28,7 +37,7 @@ class User implements UserInterface
     {
         return '';
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -36,15 +45,14 @@ class User implements UserInterface
     {
         return '';
     }
-    
+
     /**
      * {@inheritdoc}
      */
     function eraseCredentials()
     {
-        
     }
-    
+
     /**
      * {@inheritdoc}
      */
