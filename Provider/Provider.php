@@ -2,14 +2,14 @@
 
 namespace Etcpasswd\OAuthBundle\Provider;
 
-
-use Buzz\Client\ClientInterface,
-    Buzz\Message\Request,
-    Buzz\Message\Response;
+use Buzz\Client\ClientInterface;
+use Buzz\Message\Request;
+use Buzz\Message\Response;
 
 /**
+ * Base Provider class
  *
- * @author   Marcel Beerta <marcel@etcpasswd.de>
+ * @author Marcel Beerta <marcel@etcpasswd.de>
  */
 abstract class Provider implements ProviderInterface
 {
@@ -22,11 +22,14 @@ abstract class Provider implements ProviderInterface
 
     protected function request($url, $method = null)
     {
-        $method = is_null($method) ? Request::METHOD_GET : $method;
+        if (null === $method) {
+            $method = Request::METHOD_GET;
+        }
+
         $request = new Request($method, $url);
         $response = new Response();
         $this->client->send($request, $response);
+
         return $response->getContent();
     }
-
 }

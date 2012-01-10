@@ -2,33 +2,16 @@
 
 namespace Etcpasswd\OAuthBundle\Provider;
 
-use Etcpasswd\OAuthBundle\Provider\TokenResponseInterface,
-    Etcpasswd\OAuthBundle\Provider\Token\GithubToken;
-
-use Buzz\Client\ClientInterface,
-    Buzz\Message\Request,
-    Buzz\Message\Response;
+use Etcpasswd\OAuthBundle\Provider\Token\GithubToken;
 
 /**
  * OAuth provider for github
  *
- * @see http://developer.github.com/v3/oauth
- * @author   Marcel Beerta <marcel@etcpasswd.de>
+ * @author Marcel Beerta <marcel@etcpasswd.de>
+ * @link   http://developer.github.com/v3/oauth
  */
 class GithubProvider extends Provider
 {
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAuthorizationUrl($clientId, $scope, $redirectUrl)
-    {
-        return 'https://github.com/login/oauth/authorize'
-            .'?client_id='.$clientId
-            .'&scope='.$scope
-            .'&redirect_url='.urlencode($redirectUrl);
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -91,4 +74,14 @@ class GithubProvider extends Provider
         return new GithubToken($jsonObject, $result['access_token']);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getAuthorizationUrl($clientId, $scope, $redirectUrl)
+    {
+        return 'https://github.com/login/oauth/authorize'
+            .'?client_id='.$clientId
+            .'&scope='.$scope
+            .'&redirect_url='.urlencode($redirectUrl);
+    }
 }
