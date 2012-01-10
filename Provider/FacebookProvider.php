@@ -3,13 +3,18 @@
 namespace Etcpasswd\OAuthBundle\Provider;
 
 use Etcpasswd\OAuthBundle\Provider\Token\FacebookToken;
+
 /**
+ * OAuth provider for facebook
  *
- * @author   Marcel Beerta <marcel@etcpasswd.de>
+ * @author Marcel Beerta <marcel@etcpasswd.de>
+ * @link   http://developers.facebook.com/docs/authentication/
  */
 class FacebookProvider extends Provider
 {
-
+    /**
+     * {@inheritDoc}
+     */
     public function createTokenResponse($clientId, $secret, $code, $redirectUrl = "")
     {
         $url = 'https://graph.facebook.com/oauth/access_token'
@@ -35,6 +40,9 @@ class FacebookProvider extends Provider
         return new FacebookToken($json, $accessToken, $expiresAt);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getAuthorizationUrl($clientId, $scope, $redirectUrl)
     {
         return 'https://www.facebook.com/dialog/oauth'
@@ -42,5 +50,4 @@ class FacebookProvider extends Provider
             .'&redirect_uri='.$redirectUrl
             .'&scope='.$scope;
     }
-
 }
