@@ -19,6 +19,7 @@ class OAuthToken extends AbstractToken
         $this->response = $response;
         $this->setAttribute('access_token', $response->getAccessToken());
         $this->setAttribute('via', $response->getProviderKey());
+        $this->setAttribute('data', $response->getJson());
     }
 
     public function getCredentials()

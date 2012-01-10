@@ -8,7 +8,6 @@ namespace Etcpasswd\OAuthBundle\Provider\Token;
  */
 class GithubToken implements TokenResponseInterface
 {
-
     private $json;
     private $accessToken;
 
@@ -54,10 +53,14 @@ class GithubToken implements TokenResponseInterface
     {
         return $this->accessToken;
     }
-    
+
     public function getProviderKey()
     {
         return 'github';
     }
-    
+
+    public function getJson()
+    {
+        return $this->json;
+    }
 }
