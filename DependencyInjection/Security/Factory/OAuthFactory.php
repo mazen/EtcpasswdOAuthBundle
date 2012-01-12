@@ -33,6 +33,7 @@ class OAuthFactory extends AbstractFactory
         'client_id'                      => null,
         'client_secret'                  => null,
         'auth_provider'                  => null,
+        'auth_provider_service'          => null,
         'scope'                          => null,
         'uid'                            => null,
         'check_path'                     => '/login_check',

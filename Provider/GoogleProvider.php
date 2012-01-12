@@ -17,7 +17,7 @@ class GoogleProvider extends Provider
     /**
      * {@inheritDoc}
      */
-    public function createTokenResponse($clientId, $secret, $code, $redirectUrl = "")
+    public function createTokenResponse($clientId, $secret, $returnvalues, $redirectUrl = "", $service = null)
     {
         $url = 'https://www.google.com/accounts/o8/oauth2/token';
 
@@ -39,7 +39,7 @@ class GoogleProvider extends Provider
         }
         $expiresAt = time() + $data->expires_in;
 
-        $people = 'https://www.googleapis.com/plus/v1/people/me'
+        $people = (is_null($service))? 'https://www.googleapis.com/plus/v1/people/me' : $service
             .'?key='.$clientId
             .'&access_token='.$data->access_token;
         $me = json_decode($this->request($people));

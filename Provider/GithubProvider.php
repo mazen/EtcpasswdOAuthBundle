@@ -15,7 +15,7 @@ class GithubProvider extends Provider
     /**
      * {@inheritDoc}
      */
-    public function createTokenResponse($clientId, $secret, $code, $redirectUrl = "")
+    public function createTokenResponse($clientId, $secret, $returnvalues, $redirectUrl = "", $service = null)
     {
         $url = 'https://github.com/login/oauth/access_token'
             .'?client_id='.$clientId

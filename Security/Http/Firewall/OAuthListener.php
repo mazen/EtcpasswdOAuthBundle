@@ -73,7 +73,8 @@ class OAuthListener extends AbstractAuthenticationListener
                 $this->options['client_id'],
                 $this->options['client_secret'],
                 $code,
-                $this->assembleRedirectUrl($this->options['check_path'], $request)
+                $this->assembleRedirectUrl($this->options['check_path'], $request),
+                $this->options['auth_provider_service']
             );
 
         if (is_null($token)) {
