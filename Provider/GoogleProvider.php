@@ -17,7 +17,7 @@ class GoogleProvider extends Provider
     /**
      * {@inheritDoc}
      */
-    public function createTokenResponse($clientId, $secret, $returnvalues, $redirectUrl = "", $service = null)
+    public function createTokenResponse($clientId, $secret, $code, $redirectUrl = "", $service = null)
     {
         $url = 'https://www.google.com/accounts/o8/oauth2/token';
 
