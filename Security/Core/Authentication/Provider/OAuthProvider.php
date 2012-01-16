@@ -9,8 +9,6 @@ use Symfony\Component\Security\Core\User\UserProviderInterface,
     Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface,
     Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 
-
-
 use Etcpasswd\OAuthBundle\Security\Core\Authentication\Token\OAuthToken;
 
 /**
@@ -25,8 +23,8 @@ class OAuthProvider implements AuthenticationProviderInterface
 
     public function __construct(UserProviderInterface $userProvider, $providerKey)
     {
-        $this->userProvider     = $userProvider;
-        $this->providerKey      = $providerKey;
+        $this->userProvider = $userProvider;
+        $this->providerKey  = $providerKey;
     }
 
     /**
@@ -36,9 +34,10 @@ class OAuthProvider implements AuthenticationProviderInterface
     {
         $user = $this->userProvider->loadUserByUsername($token->getUsername());
         if ($user) {
-            $authenticatedToken = new OAuthtoken($user->getRoles(), $token->getResponse());
-            $authenticatedToken ->setAuthenticated(true);
-            $authenticatedToken ->setUser($user);
+            $authenticatedToken = new OAuthToken($user->getRoles(), $token->getResponse());
+            $authenticatedToken->setAuthenticated(true);
+            $authenticatedToken->setUser($user);
+
             return $authenticatedToken;
         }
 
@@ -49,5 +48,4 @@ class OAuthProvider implements AuthenticationProviderInterface
     {
         return $token instanceof OAuthToken;
     }
-
 }
