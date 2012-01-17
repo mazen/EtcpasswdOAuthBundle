@@ -1,0 +1,33 @@
+{
+    "name":        "etcpasswd/oauth-bundle",
+    "type":        "symfony-bundle",
+    "description": "An OAuth firewall for Symfony2",
+    "keywords":    ["security", "firewall", "oauth"],
+    "homepage":    "http://github.com/mazen/EtcpasswdOAuthBundle",
+    "license":     "MIT",
+
+    "authors": [
+        {
+            "name": "Marcel Beerta",
+            "email": "marcel@etcpasswd.de"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "https://github.com/mazen/EtcpasswdOAuthBundle/contributors"
+        }
+    ],
+
+    "require": {
+        "php":                      ">=5.3.2",
+        "symfony/framework-bundle": "2.*",
+        "kriswallsmith/buzz":       "*"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Etcpasswd\\OAuthBundle": ""
+        }
+    },
+
+    "target-dir": "Etcpasswd/OAuthBundle"
+}
