@@ -38,7 +38,7 @@ interface TokenResponseInterface
      * @return bool
      */
     function isLongLived();
-    
+
     /**
      * Returns the provider id used to generate the access
      * token
@@ -46,4 +46,11 @@ interface TokenResponseInterface
      * @returun string
      */
     function getProviderKey();
+
+    /**
+     * Returns the json data about access token
+     *
+     * @returun \stdClass
+     */
+    function getJson();
 }
