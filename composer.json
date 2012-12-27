@@ -1,5 +1,5 @@
 {
-    "name":        "etcpasswd/oauth-bundle",
+    "name":        "andrewbrereton/oauth-bundle",
     "type":        "symfony-bundle",
     "description": "An OAuth firewall for Symfony2",
     "keywords":    ["security", "firewall", "oauth"],
