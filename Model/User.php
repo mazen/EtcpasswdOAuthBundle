@@ -2,13 +2,14 @@
 namespace Etcpasswd\OAuthBundle\Model;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * Implementation of a User entity authenticated by this provider
  *
  * @author Marcel Beerta <marcel@etcpasswd.de>
  */
-class User implements UserInterface
+class User implements UserInterface, EquatableInterface
 {
     private $username;
 
@@ -56,7 +57,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    function equals(UserInterface $user)
+    function isEqualTo(UserInterface $user)
     {
         return (
             $user instanceof User
