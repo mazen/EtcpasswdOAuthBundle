@@ -28,6 +28,7 @@
 
         <!-- security listener -->
         <service id="etcpasswd_oauth.authentication.listener.oauth"
+            abstract="true"
             class="%etcpasswd_oauth.authentication.listener.oauth.class%"
             parent="security.authentication.listener.abstract">
                 <argument /><!-- ProviderInterface -->
